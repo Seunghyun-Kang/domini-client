@@ -1,5 +1,5 @@
 <div class="content">
-<mat-stepper  linear #stepper>
+<mat-stepper linear #stepper>
   <mat-step [stepControl]="userFormGroup" state="chat">
     <form [formGroup]="userFormGroup">
       <ng-template matStepLabel>여행자 정보</ng-template>
@@ -9,7 +9,6 @@
 <div class="question-container">
   <p class="header">이름을 알려주세요</p>
   <mat-form-field class="from" appearance="fill">
-    <!-- <mat-label>이름</mat-label> -->
     <input matInput placeholder="도미니" formControlName="nameCtrl" required>
   </mat-form-field>
 </div>
@@ -40,7 +39,11 @@
 
       </div>
       <div>
-        <button mat-button matStepperNext>다음</button>
+        <!-- <img mat-button src="../../../assets/img/next-button.png" matStepperNext alt="next"> -->
+        <button mat-button matStepperNext>
+          <img class="icon"
+          src="../../../assets/img/next-button.png" alt="next">
+        </button>
       </div>
     </form>
   </mat-step>
@@ -92,8 +95,14 @@
     </div>
       </div>
       <div>
-        <button mat-button matStepperPrevious>이전</button>
-        <button mat-button matStepperNext>다음</button>
+        <button mat-button matStepperPrevious>
+          <img class="icon"
+          src="../../../assets/img/previous.png" alt="prev">
+        </button>
+        <button mat-button matStepperNext>
+          <img class="icon"
+          src="../../../assets/img/next-button.png" alt="next">
+        </button>
       </div>
     </form>
   </mat-step>
@@ -132,9 +141,14 @@
       </div>
       </div>
       <div>
-        <button mat-button matStepperPrevious>이전</button>
-        <button mat-button matStepperNext (click)= "onClickComplete()">다음</button>
-      </div>
+        <button mat-button matStepperPrevious>
+          <img class="icon"
+          src="../../../assets/img/previous.png" alt="prev">
+        </button>
+        <button mat-button matStepperNext>
+          <img class="icon"
+          src="../../../assets/img/next-button.png" alt="next">
+        </button></div>
     </form>
   </mat-step>
 
@@ -142,8 +156,14 @@
     <ng-template matStepLabel>완료</ng-template>
     <p>감사합니다. 조금만 기다려주세요.</p>
     <div>
-      <button mat-button matStepperPrevious>이전</button>
-      <button mat-button (click)="stepper.reset()">다시하기</button>
+      <button mat-button matStepperPrevious>
+        <img class="icon"
+        src="../../../assets/img/previous.png" alt="prev">
+      </button>
+      <button mat-button (click)="stepper.reset()">
+        <img class="icon"
+        src="../../../assets/img/refresh.png" alt="refresh">
+      </button>
     </div>
   </mat-step>
 
