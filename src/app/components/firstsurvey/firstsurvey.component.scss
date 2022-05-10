@@ -21,7 +21,7 @@
   flex-direction: column;
   align-content: center;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   .question-container {
     display: flex;
     flex-direction: column;
@@ -44,6 +44,15 @@
       width: 33%;
     }
   }
+}
+
+button {
+  background: transparent;
+  border-color: transparent;
+}
+.icon {
+  width: 40px;
+  margin-top: 20px;
 }
   .mat-form-field {
     font-family: "Happiness-Sans-Title";
