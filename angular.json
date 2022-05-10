@@ -28,6 +28,7 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/plane.png",
+              "src/plane-flight-icon.png",
               "src/assets"
             ],
             "styles": [
@@ -100,6 +101,7 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/plane.png",
+              "src/plane-flight-icon.png",
               "src/assets"
             ],
             "styles": [
