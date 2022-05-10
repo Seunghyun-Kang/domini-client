@@ -1,1 +1,203 @@
-<p>firstsurvey works!</p>
+<div class="content">
+<mat-stepper  linear #stepper>
+  <mat-step [stepControl]="userFormGroup" state="chat">
+    <form [formGroup]="userFormGroup">
+      <ng-template matStepLabel>여행자 정보</ng-template>
+      
+      <div class="form-container">
+
+<div class="question-container">
+  <p class="header">이름을 알려주세요</p>
+  <mat-form-field class="from" appearance="fill">
+    <mat-label>이름</mat-label>
+    <input matInput placeholder="도미니" formControlName="nameCtrl" required>
+  </mat-form-field>
+</div>
+   
+<div class="question-container">
+      <p class="header">생일을 알려주세요</p>
+      <mat-form-field  class="from" appearance="fill">
+    <mat-label>생일</mat-label>
+        <input matInput [matDatepicker]="birthday" formControlName="birthCtrl" disabled>
+        <mat-datepicker-toggle matSuffix [for]="birthday"></mat-datepicker-toggle>
+        <mat-datepicker #birthday disabled="false"></mat-datepicker>
+      </mat-form-field>
+    </div>
+      </div>
+      <div>
+        <button mat-button matStepperNext>다음</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <!-- <mat-step [stepControl]="birthFormGroup" errorMessage="ㅠㅠ">
+    <form [formGroup]="birthFormGroup">
+      <ng-template matStepLabel>생일이 언제인가요?</ng-template>
+      <mat-form-field appearance="fill">
+        <mat-label>생일</mat-label>
+        <input matInput [matDatepicker]="birthday" formControlName="birthCtrl" disabled>
+        <mat-datepicker-toggle matSuffix [for]="birthday"></mat-datepicker-toggle>
+        <mat-datepicker #birthday disabled="false"></mat-datepicker>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>이전</button>
+        <button mat-button matStepperNext>다음</button>
+      </div>
+    </form>
+  </mat-step> -->
+
+  <mat-step [stepControl]="payFormGroup" errorMessage="ㅠㅠ">
+    <form [formGroup]="payFormGroup">
+      <ng-template matStepLabel>결제 정보</ng-template>
+
+      <div class="form-container">
+      <div class="mat-form-field" appearance="fill">
+        <section class="example-section" [formGroup]="payFormGroup">
+          <!-- <h4>Select your toppings:</h4> -->
+          
+          <p><mat-checkbox formControlName="samsung_card">삼성카드</mat-checkbox></p>
+          <p><mat-checkbox formControlName="hyundai_card">현대카드</mat-checkbox></p>
+          <p><mat-checkbox formControlName="shinhan_card">신한카드</mat-checkbox></p>
+        </section>
+      </div>
+
+       <div class="mat-form-field" appearance="fill">
+        <section class="example-section" [formGroup]="payFormGroup">
+          <p><mat-checkbox formControlName="skt_mc">SKT</mat-checkbox></p>
+          <p><mat-checkbox formControlName="kt_mc">KT</mat-checkbox></p>
+          <p><mat-checkbox formControlName="lg_mc">LG U+</mat-checkbox></p>
+          <p><mat-checkbox formControlName="extra_mc">알뜰폰</mat-checkbox></p>
+          <p><mat-checkbox formControlName="vip_mc">혹시 VIP 회원이신가요?</mat-checkbox></p>
+        </section>
+      </div>
+
+      <div class="mat-form-field" appearance="fill">
+        <section class="example-section" [formGroup]="payFormGroup">
+          <input matInput formControlName="applicationCtrl">
+          <p><mat-checkbox formControlName="kakao_pay">카카오페이</mat-checkbox></p>
+          <p><mat-checkbox formControlName="naver_pay">네이버페이</mat-checkbox></p>
+          <p><mat-checkbox formControlName="payco_pay">페이코</mat-checkbox></p>
+          <p><mat-checkbox formControlName="smile_pay">스마일페이</mat-checkbox></p>
+        </section>
+      </div>
+      
+      </div>
+      <div>
+        <button mat-button matStepperPrevious>이전</button>
+        <button mat-button matStepperNext>다음</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <!-- <mat-step [stepControl]="mobilecarrierFormGroup" errorMessage="ㅠㅠ">
+    <form [formGroup]="mobilecarrierFormGroup">
+      <ng-template matStepLabel>어떤 통신사 사용하세요?</ng-template>
+      <mat-form-field appearance="fill">
+        <section class="example-section" [formGroup]="mobilecarrierFormGroup">
+          <input matInput formControlName="mobilecarrierCtrl">
+          <p><mat-checkbox formControlName="skt">SKT</mat-checkbox></p>
+          <p><mat-checkbox formControlName="kt">KT</mat-checkbox></p>
+          <p><mat-checkbox formControlName="lg_uplus">LG U+</mat-checkbox></p>
+          <p><mat-checkbox formControlName="extra">알뜰폰</mat-checkbox></p>
+          <p><mat-checkbox formControlName="vip">혹시 VIP 회원이신가요?</mat-checkbox></p>
+        </section>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>이전</button>
+        <button mat-button matStepperNext>다음</button>
+      </div>
+    </form>
+  </mat-step> -->
+  
+  <!-- <mat-step [stepControl]="applicationFormGroup" errorMessage="ㅠㅠ">
+    <form [formGroup]="applicationFormGroup">
+      <ng-template matStepLabel>혹시 간편 결제 앱 사용하시나요?</ng-template>
+      <mat-form-field appearance="fill">
+        <section class="example-section" [formGroup]="applicationFormGroup">
+          <input matInput formControlName="applicationCtrl">
+          <p><mat-checkbox formControlName="kakao">카카오페이</mat-checkbox></p>
+          <p><mat-checkbox formControlName="naver">네이버페이</mat-checkbox></p>
+          <p><mat-checkbox formControlName="payco">페이코</mat-checkbox></p>
+          <p><mat-checkbox formControlName="smile">스마일페이</mat-checkbox></p>
+        </section>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>이전</button>
+        <button mat-button matStepperNext>다음</button>
+      </div>
+    </form>
+  </mat-step> -->
+
+
+
+  <mat-step [stepControl]="flightFormGroup" errorMessage="ㅠㅠ">
+    <form [formGroup]="flightFormGroup">
+      <ng-template matStepLabel>여행 정보</ng-template>
+
+      <div class="form-container">
+      <mat-form-field appearance="fill">
+        <mat-label>몇 명?</mat-label>
+        <input matInput placeholder="" formControlName="passengerCtrl" required>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>김포 -> 제주 출발 날짜</mat-label>
+        <input matInput [matDatepicker]="start_date" formControlName="travelstartdateCtrl" disabled>
+        <mat-datepicker-toggle matSuffix [for]="start_date"></mat-datepicker-toggle>
+        <mat-datepicker #start_date disabled="false"></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>제주 -> 김포 출발 날짜</mat-label>
+        <input matInput [matDatepicker]="end_date"  formControlName="travelenddateCtrl" disabled>
+        <mat-datepicker-toggle matSuffix [for]="end_date"></mat-datepicker-toggle>
+        <mat-datepicker #end_date disabled="false"></mat-datepicker>
+      </mat-form-field>
+      </div>
+      <div>
+        <button mat-button matStepperPrevious>이전</button>
+        <button mat-button matStepperNext>다음</button>
+      </div>
+    </form>
+  </mat-step>
+<!-- 
+  <mat-step [stepControl]="travelDateFormGroup" errorMessage="ㅠㅠ">
+    <form [formGroup]="travelDateFormGroup">
+      <ng-template matStepLabel>여행 날짜를 알려주세요</ng-template>
+      <mat-form-field appearance="fill">
+        <mat-label>김포 -> 제주 출발 날짜</mat-label>
+        <input matInput [matDatepicker]="start_date" formControlName="travelstartdateCtrl" disabled>
+        <mat-datepicker-toggle matSuffix [for]="start_date"></mat-datepicker-toggle>
+        <mat-datepicker #start_date disabled="false"></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>제주 -> 김포 출발 날짜</mat-label>
+        <input matInput [matDatepicker]="end_date"  formControlName="travelenddateCtrl" disabled>
+        <mat-datepicker-toggle matSuffix [for]="end_date"></mat-datepicker-toggle>
+        <mat-datepicker #end_date disabled="false"></mat-datepicker>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>이전</button>
+        <button mat-button matStepperNext>다음</button>
+      </div>
+    </form>
+  </mat-step> -->
+
+  <mat-step>
+    <ng-template matStepLabel>완료</ng-template>
+    <p>감사합니다. 조금만 기다려주세요.</p>
+    <div>
+      <button mat-button matStepperPrevious>이전</button>
+      <button mat-button (click)="stepper.reset()">다시하기</button>
+    </div>
+  </mat-step>
+
+  <ng-template matStepperIcon="phone">
+    <mat-icon>call_end</mat-icon>
+  </ng-template>
+  <ng-template matStepperIcon="chat">
+    <mat-icon>forum</mat-icon>
+  </ng-template>
+</mat-stepper>
+</div>

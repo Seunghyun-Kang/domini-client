@@ -1,72 +1,109 @@
-import { Component, Input, EventEmitter, Output, OnInit } from "@angular/core";
-
-
-import * as Survey from "survey-angular";
-
-
-
-import "survey-angular/modern.css";
-
-Survey.StylesManager.applyTheme("modern");
+import { Component, Input, OnInit } from "@angular/core";
+import { MatTabChangeEvent } from '@angular/material/tabs';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
-    // tslint:disable-next-line:component-selector
-    selector: "survey1",
-    template: `<div class="survey-container contentcontainer codecontainer">
-    <div id="surveyElement"></div>
-  </div>`
+  selector: "survey1",
+  templateUrl: './firstsurvey.component.html',
+  styleUrls: ['./firstsurvey.component.scss'],
 })
+
 export class FirstsurveyComponent implements OnInit {
-    @Output() submitSurvey = new EventEmitter<any>();
-    @Input()
-    result: any;
+  @Input()
+  result: any;
 
-    ngOnInit() {
-        
-        
+  public selectedIndex = 0
+  userFormGroup: FormGroup;
+  payFormGroup: FormGroup;
+  flightFormGroup: FormGroup;
 
-        const json = {
-  "elements": [
-    {
-      "name": "name",
-      "type": "text",
-      "title": "Please enter your name:",
-      "placeHolder": "Jon Snow",
-      "isRequired": true,
-      "autoComplete": "name"
-    },
-    {
-      "name": "birthdate",
-      "type": "text",
-      "inputType": "date",
-      "title": "Your birthdate:",
-      "isRequired": true,
-      "autoComplete": "bdate"
-    },
-    {
-      "name": "color",
-      "type": "text",
-      "inputType": "color",
-      "title": "Your favorite color:"
-    },
-    {
-      "name": "email",
-      "type": "text",
-      "inputType": "email",
-      "title": "Your e-mail:",
-      "placeHolder": "jon.snow@nightwatch.org",
-      "isRequired": true,
-      "autoComplete": "email",
-      "validators": [ { "type": "email" } ]
-    }
-  ]
-};
-const survey = new Survey.Model(json);
 
-        
+  nameFormGroup: FormGroup;
+  birthFormGroup: FormGroup;
+  cardFormGroup: FormGroup;
+  applicationFormGroup: FormGroup;
+  emailFormGroup: FormGroup;
+  mobilecarrierFormGroup: FormGroup;
+  // emailFormGroup: FormGroup;
 
-        
+  passengerNumFormGroup: FormGroup;
+  travelDateFormGroup: FormGroup;
 
-        Survey.SurveyNG.render("surveyElement", { model: survey });
-    }
+  constructor(private _formBuilder: FormBuilder) {
+  }
+
+  ngOnInit() {
+    this.userFormGroup = this._formBuilder.group({
+      nameCtrl: ['', Validators.required],
+      birthCtrl: [''],
+    });
+
+    // this.nameFormGroup = this._formBuilder.group({
+    //   nameCtrl: ['', Validators.required],
+
+    // });
+    // this.birthFormGroup = this._formBuilder.group({
+    //   birthCtrl: [''],
+    // });
+    this.payFormGroup = this._formBuilder.group({
+      samsung_card: false,
+      shinhan_card: false,
+      hyundai_card: false,
+      
+      skt_mc: false,
+      kt_mc: false,
+      lg_mc: false,
+      extra_mc: false,
+      vip_mc: false,
+
+      kakao_pay: false,
+      payco_pay: false,
+      smile_pay: false,
+      naver_pay: false,
+        });
+
+    // this.cardFormGroup = this._formBuilder.group({
+    //   samsung: false,
+    //   shinhan: false,
+    //   hyundai: false,
+    //   cardCtrl: [''],
+    // });
+    // this.applicationFormGroup = this._formBuilder.group({
+    //   kakao: false,
+    //   payco: false,
+    //   smile: false,
+    //   naver: false,
+    //   applicationCtrl: [''],
+    // });
+    // this.mobilecarrierFormGroup = this._formBuilder.group({
+    //   skt: false,
+    //   kt: false,
+    //   lg_uplus: false,
+    //   extra: false,
+    //   vip: false,
+    //   mobilecarrierCtrl: [''],
+    // });
+
+    this.emailFormGroup = this._formBuilder.group({
+      emailCtrl: [''],
+    });
+    this.flightFormGroup = this._formBuilder.group({
+      passengerCtrl: ['', Validators.required],
+      travelstartdateCtrl: ['', Validators.required],
+      travelenddateCtrl: ['', Validators.required],
+    });
+
+    // this.passengerNumFormGroup = this._formBuilder.group({
+    //   passengerCtrl: ['', Validators.required],
+    // });
+    // this.travelDateFormGroup = this._formBuilder.group({
+    //   travelstartdateCtrl: ['', Validators.required],
+    //   travelenddateCtrl: ['', Validators.required],
+    // });
+    
+  }
+
+  tabChanged(tabChangeEvent: MatTabChangeEvent): void {
+    this.selectedIndex = tabChangeEvent.index;
+  }
 }
