@@ -10,7 +10,9 @@ export interface IEvent {
     pay_application: string,
     min_cost: number,
     start_date: string,
-    end_date: string
+    end_date: string,
+    need_category: string,
+    need_value: string
 }
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -93,20 +95,20 @@ export class FirstsurveyComponent implements OnInit {
           "email": this.userFormGroup.controls['emailCtrl'].value
         },
         "pay_info": {
-          "samsung_card": this.payFormGroup.controls['samsung_card'].value,
-          "hyundai_card": this.payFormGroup.controls['hyundai_card'].value,
-          "shinhan_card": this.payFormGroup.controls['shinhan_card'].value,
+          "samsung_card": this.payFormGroup.controls['samsung_card'].value ? 'Y' : 'N',
+          "hyundai_card": this.payFormGroup.controls['hyundai_card'].value ? 'Y' : 'N',
+          "shinhan_card": this.payFormGroup.controls['shinhan_card'].value ? 'Y' : 'N',
 
-          "skt_mc": this.payFormGroup.controls['skt_mc'].value,
-          "kt_mc": this.payFormGroup.controls['kt_mc'].value,
-          "lg_mc": this.payFormGroup.controls['lg_mc'].value,
-          "extra_mc": this.payFormGroup.controls['extra_mc'].value,
-          "vip_mc": this.payFormGroup.controls['vip_mc'].value,
+          "skt_mc": this.payFormGroup.controls['skt_mc'].value ? 'Y' : 'N',
+          "kt_mc": this.payFormGroup.controls['kt_mc'].value ? 'Y' : 'N',
+          "lg_mc": this.payFormGroup.controls['lg_mc'].value ? 'Y' : 'N',
+          "extra_mc": this.payFormGroup.controls['extra_mc'].value ? 'Y' : 'N',
+          "vip_mc": this.payFormGroup.controls['vip_mc'].value ? 'Y' : 'N',
 
-          "kakao_pay": this.payFormGroup.controls['kakao_pay'].value,
-          "payco_pay": this.payFormGroup.controls['payco_pay'].value,
-          "smile_pay": this.payFormGroup.controls['smile_pay'].value,
-          "naver_pay": this.payFormGroup.controls['naver_pay'].value
+          "kakao_pay": this.payFormGroup.controls['kakao_pay'].value ? 'Y' : 'N',
+          "payco_pay": this.payFormGroup.controls['payco_pay'].value ? 'Y' : 'N',
+          "smile_pay": this.payFormGroup.controls['smile_pay'].value ? 'Y' : 'N',
+          "naver_pay": this.payFormGroup.controls['naver_pay'].value ? 'Y' : 'N'
 
         },
         "flight_info": {
