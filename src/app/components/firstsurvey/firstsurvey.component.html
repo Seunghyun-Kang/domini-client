@@ -153,8 +153,28 @@
   </mat-step>
 
   <mat-step>
+    
     <ng-template matStepLabel>완료</ng-template>
+    <div *ngIf="!getData">
     <p>감사합니다. 조금만 기다려주세요.</p>
+  </div>
+  
+    <div *ngIf="getData">
+    <p>내가 바로 받을 수 있는 혜택!</p>
+    <div *ngFor="let event of matchEventList">
+        {{event.airline}} 항공 {{event.discount}}원 할인 이벤트
+    </div>
+
+    <p>조금만 노력하면 받을 수 있는 혜택!</p>
+    <div *ngFor="let event of oneStepEventList">
+      <p>{{event.need_to_add}} 한다면?</p>
+        <p>{{event.airline}} 항공 {{event.discount}}원 할인 이벤트</p>
+    </div>
+
+
+  </div>
+
+
     <div>
       <button mat-button matStepperPrevious>
         <img class="icon"
