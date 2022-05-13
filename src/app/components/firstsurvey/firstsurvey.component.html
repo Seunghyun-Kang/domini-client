@@ -165,9 +165,9 @@
     <p style="margin-top: 30px;">내가 바로 받을 수 있는 혜택!</p>
     <div *ngFor="let event of matchEventList">
         <div class="result-container">
-          {{event.airline}} 항공 <span style="color: firebrick;">{{event.discount}}</span>원 할인 이벤트
+          <span style="color: midnightblue;">{{event.airline}} 항공 </span><br><span style="color: firebrick;">{{event.discount}}</span>원 할인 이벤트
           <button mat-button (click)="onClickLink(event.link)">
-            <img class="icon" style="margin-top: 0px; margin-left: 10px;"
+            <img class="icon" style="margin-top: 0px; margin-left: 10px; width: 40%;"
             src="../../../assets/img/link.png" alt="link">
           </button>
         </div>
