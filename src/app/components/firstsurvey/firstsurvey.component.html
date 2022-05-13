@@ -6,14 +6,7 @@
       
       <div class="form-container">
 
-<div class="question-container">
-  <p class="header">이름을 알려주세요</p>
-  <mat-form-field class="from" appearance="fill">
-    <input matInput placeholder="도미니" formControlName="nameCtrl" required>
-  </mat-form-field>
-</div>
-   
-<div class="question-container">
+<!-- <div class="question-container">
       <p class="header">생일을 알려주세요</p>
       <mat-form-field  class="from" appearance="fill">
     <mat-label>3/4/1992</mat-label>
@@ -21,7 +14,7 @@
         <mat-datepicker-toggle matSuffix [for]="birthday"></mat-datepicker-toggle>
         <mat-datepicker #birthday disabled="false"></mat-datepicker>
       </mat-form-field>
-    </div>
+    </div> -->
 
     <div class="question-container">
       <p class="header">메일을 알려주세요</p>
@@ -32,11 +25,16 @@
           Please enter a valid email address
         </mat-error>
         <mat-error *ngIf="emailFormControl.hasError('required')">
-          Email is <strong>required</strong>
+          새로운 이벤트가 생길때마다 알려드릴게요! <strong></strong>
         </mat-error>
       </mat-form-field>
     </div>
-
+    <div class="question-container">
+      <p class="header">나이를 알려주세요</p>
+      <mat-form-field class="from" appearance="fill">
+        <input matInput placeholder="31" formControlName="nameCtrl" required>
+      </mat-form-field>
+    </div>
       </div>
       <div>
         <!-- <img mat-button src="../../../assets/img/next-button.png" matStepperNext alt="next"> -->
@@ -60,10 +58,15 @@
         <section class="example-section" [formGroup]="payFormGroup">
           <!-- <h4>Select your toppings:</h4> -->
           
-          <p><mat-checkbox formControlName="samsung_card">삼성카드</mat-checkbox></p>
-          <p><mat-checkbox formControlName="hyundai_card">현대카드</mat-checkbox></p>
-          <p><mat-checkbox formControlName="shinhan_card">신한카드</mat-checkbox></p>
-        </section>
+          <p><mat-checkbox formControlName="card_samsung">삼성카드</mat-checkbox></p>
+          <p><mat-checkbox formControlName="card_shinhan">신한카드</mat-checkbox></p>
+          <p><mat-checkbox formControlName="card_kb">국민카드</mat-checkbox></p>
+          <p><mat-checkbox formControlName="card_bc">비씨카드</mat-checkbox></p>
+          <p><mat-checkbox formControlName="card_hyundai">현대카드</mat-checkbox></p>
+          <p><mat-checkbox formControlName="card_nh">농협카드</mat-checkbox></p>
+          <p><mat-checkbox formControlName="card_lotte">롯데카드</mat-checkbox></p>
+          <p><mat-checkbox formControlName="card_woori">우리카드</mat-checkbox></p>
+          </section>
       </div>
 </div>
 
@@ -71,11 +74,10 @@
   <p class="header">통신사는 어디 쓰세요?</p>
        <div class="mat-form-field" appearance="fill">
         <section class="example-section" [formGroup]="payFormGroup">
-          <p><mat-checkbox formControlName="skt_mc">SKT</mat-checkbox></p>
-          <p><mat-checkbox formControlName="kt_mc">KT</mat-checkbox></p>
-          <p><mat-checkbox formControlName="lg_mc">LG U+</mat-checkbox></p>
-          <p><mat-checkbox formControlName="extra_mc">알뜰폰</mat-checkbox></p>
-          <p><mat-checkbox formControlName="vip_mc">혹시 VIP 회원이신가요?</mat-checkbox></p>
+          <p><mat-checkbox formControlName="mc_skt">SKT</mat-checkbox></p>
+          <p><mat-checkbox formControlName="mc_kt">KT</mat-checkbox></p>
+          <p><mat-checkbox formControlName="mc_lgu">LG U+</mat-checkbox></p>
+          <p><mat-checkbox formControlName="mc_vip">혹시 VIP 회원이신가요?</mat-checkbox></p>
         </section>
       </div>
 
@@ -85,10 +87,10 @@
   <p class="header">페이앱 쓰시는 곳 있나요?</p>
       <div class="mat-form-field" appearance="fill">
         <section class="example-section" [formGroup]="payFormGroup">
-          <p><mat-checkbox formControlName="kakao_pay">카카오페이</mat-checkbox></p>
-          <p><mat-checkbox formControlName="naver_pay">네이버페이</mat-checkbox></p>
-          <p><mat-checkbox formControlName="payco_pay">페이코</mat-checkbox></p>
-          <p><mat-checkbox formControlName="smile_pay">스마일페이</mat-checkbox></p>
+          <p><mat-checkbox formControlName="pay_kakao">카카오페이</mat-checkbox></p>
+          <p><mat-checkbox formControlName="pay_naver">네이버페이</mat-checkbox></p>
+          <p><mat-checkbox formControlName="pay_payco">페이코</mat-checkbox></p>
+          <p><mat-checkbox formControlName="pay_smile">스마일페이</mat-checkbox></p>
         </section>
       </div>
       
@@ -160,22 +162,25 @@
   </div>
   
     <div *ngIf="getData">
-    <p>내가 바로 받을 수 있는 혜택!</p>
+    <p style="margin-top: 30px;">내가 바로 받을 수 있는 혜택!</p>
     <div *ngFor="let event of matchEventList">
-        {{event.airline}} 항공 {{event.discount}}원 할인 이벤트
+        <div class="result-container">
+          {{event.airline}} 항공 <span style="color: firebrick;">{{event.discount}}</span>원 할인 이벤트
+          <button mat-button (click)="onClickLink(event.link)">
+            <img class="icon" style="margin-top: 0px; margin-left: 10px;"
+            src="../../../assets/img/link.png" alt="link">
+          </button>
+        </div>
     </div>
 
-    <p>조금만 노력하면 받을 수 있는 혜택!</p>
+    <!-- <p>조금만 노력하면 받을 수 있는 혜택!</p>
     <div *ngFor="let event of oneStepEventList">
       <p>{{event.need_to_add}} 한다면?</p>
         <p>{{event.airline}} 항공 {{event.discount}}원 할인 이벤트</p>
-    </div>
-
-
+    </div> -->
   </div>
 
-
-    <div>
+    <div style="margin-top: 30px;">
       <button mat-button matStepperPrevious>
         <img class="icon"
         src="../../../assets/img/previous.png" alt="prev">
