@@ -53,20 +53,24 @@ export class FirstsurveyComponent implements OnInit {
     });
 
     this.payFormGroup = this._formBuilder.group({
-      samsung_card: [false],
-      shinhan_card: [false],
-      hyundai_card: [false],
+      card_samsung: [false],
+      card_shinhan: [false],
+      card_kb: [false],
+      card_bc: [false],
+      card_hyundai: [false],
+      card_nh: [false],
+      card_lotte: [false],
+      card_woori: [false],
 
-      skt_mc: [false],
-      kt_mc:  [false],
-      lg_mc:  [false],
-      extra_mc:  [false],
-      vip_mc:  [false],
+      mc_skt: [false],
+      mc_kt:  [false],
+      mc_lgu:  [false],
+      mc_vip:  [false],
 
-      kakao_pay: [false],
-      payco_pay: [false],
-      smile_pay:  [false],
-      naver_pay:  [false],
+      pay_kakao: [false],
+      pay_naver: [false],
+      pay_payco:  [false],
+      pay_smile:  [false],
     });
 
     this.flightFormGroup = this._formBuilder.group({
@@ -95,20 +99,24 @@ export class FirstsurveyComponent implements OnInit {
           "email": this.userFormGroup.controls['emailCtrl'].value
         },
         "pay_info": {
-          "samsung_card": this.payFormGroup.controls['samsung_card'].value ? 'Y' : 'N',
-          "hyundai_card": this.payFormGroup.controls['hyundai_card'].value ? 'Y' : 'N',
-          "shinhan_card": this.payFormGroup.controls['shinhan_card'].value ? 'Y' : 'N',
+          "card_samsung": this.payFormGroup.controls['card_samsung'].value ? 'Y' : 'N',
+          "card_shinhan": this.payFormGroup.controls['card_shinhan'].value ? 'Y' : 'N',
+          "card_kb": this.payFormGroup.controls['card_kb'].value ? 'Y' : 'N',
+          "card_bc": this.payFormGroup.controls['card_bc'].value ? 'Y' : 'N',
+          "card_hyundai": this.payFormGroup.controls['card_hyundai'].value ? 'Y' : 'N',
+          "card_nh": this.payFormGroup.controls['card_nh'].value ? 'Y' : 'N',
+          "card_lotte": this.payFormGroup.controls['card_lotte'].value ? 'Y' : 'N',
+          "card_woori": this.payFormGroup.controls['card_woori'].value ? 'Y' : 'N',
 
-          "skt_mc": this.payFormGroup.controls['skt_mc'].value ? 'Y' : 'N',
-          "kt_mc": this.payFormGroup.controls['kt_mc'].value ? 'Y' : 'N',
-          "lg_mc": this.payFormGroup.controls['lg_mc'].value ? 'Y' : 'N',
-          "extra_mc": this.payFormGroup.controls['extra_mc'].value ? 'Y' : 'N',
-          "vip_mc": this.payFormGroup.controls['vip_mc'].value ? 'Y' : 'N',
+          "mc_skt": this.payFormGroup.controls['mc_skt'].value ? 'Y' : 'N',
+          "mc_kt": this.payFormGroup.controls['mc_kt'].value ? 'Y' : 'N',
+          "mc_lgu": this.payFormGroup.controls['mc_lgu'].value ? 'Y' : 'N',
+          "mc_vip": this.payFormGroup.controls['mc_vip'].value ? 'Y' : 'N',
 
-          "kakao_pay": this.payFormGroup.controls['kakao_pay'].value ? 'Y' : 'N',
-          "payco_pay": this.payFormGroup.controls['payco_pay'].value ? 'Y' : 'N',
-          "smile_pay": this.payFormGroup.controls['smile_pay'].value ? 'Y' : 'N',
-          "naver_pay": this.payFormGroup.controls['naver_pay'].value ? 'Y' : 'N'
+          "pay_kakao": this.payFormGroup.controls['pay_kakao'].value ? 'Y' : 'N',
+          "pay_naver": this.payFormGroup.controls['pay_naver'].value ? 'Y' : 'N',
+          "pay_payco": this.payFormGroup.controls['pay_payco'].value ? 'Y' : 'N',
+          "pay_smile": this.payFormGroup.controls['pay_smile'].value ? 'Y' : 'N'
 
         },
         "flight_info": {
@@ -121,11 +129,15 @@ export class FirstsurveyComponent implements OnInit {
           this.getData = true
           console.log("RESPONSE CAME")
           console.log(Object(v.body))
-          this.matchEventList = Object(v.body)['match']
+          this.matchEventList = Object(v.body)
           this.oneStepEventList = Object(v.body)['onestep']
         },
         error: (e: any) => console.log("ERROR OCCURED :: " + JSON.stringify(e))
       });
     }
+  }
+
+  onClickLink(url: string){
+    window.open(url, "_blank");
   }
 }
